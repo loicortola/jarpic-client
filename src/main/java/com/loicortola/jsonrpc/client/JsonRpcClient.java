@@ -1,7 +1,7 @@
 package com.loicortola.jsonrpc.client;
 
-import com.loicortola.jsonrpc.dto.JsonRpcRequest;
-import com.loicortola.jsonrpc.dto.JsonRpcResponse;
+import com.loicortola.jsonrpc.model.JsonRpcRequest;
+import com.loicortola.jsonrpc.model.JsonRpcResponse;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.loicortola.jsonrpc.dto;
+package com.loicortola.jsonrpc.model;
 
 /**
  * @author Loïc Ortola on 11/03/2016.

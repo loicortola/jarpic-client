@@ -1,6 +1,8 @@
-package com.loicortola.jsonrpc.dto;
+package com.loicortola.jsonrpc.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -60,6 +62,17 @@ public class JsonRpcRequest {
       ", id='" + id + '\'' +
       ", type=" + type +
       '}';
+  }
+  
+  public static List<JsonRpcRequest> combine(JsonRpcRequest... requests) {
+    if (requests == null || requests.length == 0) {
+      return null;
+    }
+    List<JsonRpcRequest> combined = new ArrayList<>(requests.length);
+    for (int i = 0; i < requests.length; i++) {
+      combined.add(requests[i]);
+    }
+    return combined;
   }
 
   public static Builder builder() {

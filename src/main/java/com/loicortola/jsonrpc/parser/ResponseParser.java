@@ -3,8 +3,8 @@ package com.loicortola.jsonrpc.parser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.loicortola.jsonrpc.dto.Error;
-import com.loicortola.jsonrpc.dto.JsonRpcResponse;
+import com.loicortola.jsonrpc.model.Error;
+import com.loicortola.jsonrpc.model.JsonRpcResponse;
 
 import java.io.IOException;
 import java.io.InputStream;

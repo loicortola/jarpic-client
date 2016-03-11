@@ -1,7 +1,7 @@
 package com.loicortola.jsonrpc.client;
 
-import com.loicortola.jsonrpc.dto.JsonRpcRequest;
-import com.loicortola.jsonrpc.dto.JsonRpcResponse;
+import com.loicortola.jsonrpc.model.JsonRpcRequest;
+import com.loicortola.jsonrpc.model.JsonRpcResponse;
 import com.loicortola.jsonrpc.parser.RequestConverter;
 import com.loicortola.jsonrpc.parser.ResponseParser;
 import okhttp3.MediaType;
