@@ -1,10 +1,10 @@
-package com.loicortola.jsonrpc.client;
+package com.loicortola.jarpic.client;
 
-import com.loicortola.jsonrpc.model.Error;
-import com.loicortola.jsonrpc.model.JsonRpcRequest;
-import com.loicortola.jsonrpc.model.JsonRpcResponse;
-import com.loicortola.jsonrpc.parser.RequestMapper;
-import com.loicortola.jsonrpc.parser.ResponseParser;
+import com.loicortola.jarpic.model.Error;
+import com.loicortola.jarpic.model.JsonRpcRequest;
+import com.loicortola.jarpic.model.JsonRpcResponse;
+import com.loicortola.jarpic.parser.RequestMapper;
+import com.loicortola.jarpic.parser.ResponseParser;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -23,7 +23,7 @@ public class HttpJsonRpcClient implements JsonRpcClient {
 
   private OkHttpClient client;
   private String endpoint;
-  private static final MediaType JSON = MediaType.parse("application/json");
+  private static final MediaType JSON = MediaType.parse("application/json; charset=UTF-8");
 
   /**
    * Construct a new HttpJsonRpcClient.
@@ -55,10 +55,14 @@ public class HttpJsonRpcClient implements JsonRpcClient {
       .post(RequestBody.create(JSON, RequestMapper.map(req).toString()))
       .build();
     Response response = client.newCall(request).execute();
-    if (response.code() == 200) {
+    if (response.header("content-type", "").contains("application/json")) {
       return ResponseParser.parseOne(response.body().byteStream(), resultClass);
     } else {
-      return JsonRpcResponse.builder().id(req.getId()).error(new Error("-32000", response.message(), null)).build();
+      // No JSON response. If 200, we assume it was a notification. Else, it was an error
+      if (response.code() == 200) {
+        return null;
+      }
+      return JsonRpcResponse.builder().id(req.getId()).error(new Error(-32000, new StringBuilder(Integer.toString(response.code())).append(" - ").append(response.message()).toString(), null)).build();
     }
   }
 
@@ -69,12 +73,16 @@ public class HttpJsonRpcClient implements JsonRpcClient {
       .post(RequestBody.create(JSON, RequestMapper.map(reqs).toString()))
       .build();
     Response response = client.newCall(request).execute();
-    if (response.code() == 200) {
+    if (response.header("content-type", "").contains("application/json")) {
       return ResponseParser.parseList(response.body().byteStream(), resultClass);
     } else {
-      List<JsonRpcResponse<T>> responses = new ArrayList<JsonRpcResponse<T>>(1);
+      // No JSON response. If 200, we assume it was a notification. Else, it was an error
+      if (response.code() == 200) {
+        return null;
+      }
+      List<JsonRpcResponse<T>> responses = new ArrayList<JsonRpcResponse<T>>(reqs.size());
       for (JsonRpcRequest req : reqs) {
-        responses.add(JsonRpcResponse.builder().id(req.getId()).error(new Error("-32000", response.message(), null)).build());
+        responses.add(JsonRpcResponse.builder().id(req.getId()).error(new Error(-32000, new StringBuilder(Integer.toString(response.code())).append(" - ").append(response.message()).toString(), null)).build());
       }
       return responses;
     }

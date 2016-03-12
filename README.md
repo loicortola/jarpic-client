@@ -1,5 +1,7 @@
-# json-rpc2.0-client
+# jarpic-client
 A Simple JSON-RPC 2.0 Java Client using Jackson and OkHttp
+
+[![Build Status](https://travis-ci.org/loicortola/jarpic-client.svg?branch=master)](https://travis-ci.org/loicortola/jarpic-client)
 
 ## Usage
 

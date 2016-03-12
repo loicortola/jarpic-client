@@ -1,4 +1,4 @@
-package com.loicortola.jsonrpc.model;
+package com.loicortola.jarpic.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

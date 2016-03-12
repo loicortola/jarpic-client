@@ -1,4 +1,4 @@
-package com.loicortola.jsonrpc.model;
+package com.loicortola.jarpic.model;
 
 /**
  * @author Loïc Ortola on 11/03/2016.
@@ -7,6 +7,10 @@ public class JsonRpcResponse<T> {
   protected String id;
   protected T result;
   protected Error error;
+
+  public String getId() {
+    return id;
+  }
 
   public T getResult() {
     return result;
