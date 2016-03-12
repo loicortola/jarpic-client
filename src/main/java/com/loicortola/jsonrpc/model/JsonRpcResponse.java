@@ -7,11 +7,7 @@ public class JsonRpcResponse<T> {
   protected String id;
   protected T result;
   protected Error error;
-  
-  public JsonRpcResponse() {
-    
-  }
-  
+
   public T getResult() {
     return result;
   }
@@ -19,6 +15,8 @@ public class JsonRpcResponse<T> {
   public Error getError() {
     return error;
   }
+
+  // BEGIN GENERATED CODE
 
   @Override
   public boolean equals(Object o) {
@@ -30,6 +28,8 @@ public class JsonRpcResponse<T> {
     return !(id != null ? !id.equals(response.id) : response.id != null);
 
   }
+
+  // BEGIN GENERATED CODE
 
   @Override
   public int hashCode() {
@@ -45,18 +45,22 @@ public class JsonRpcResponse<T> {
       '}';
   }
 
+  /**
+   * @param <T> type inference for result
+   * @return the response builder
+   */
   public static <T> Builder<T> builder() {
-    return new Builder<>();
+    return new Builder<T>();
   }
 
   public static class Builder<T> {
     protected String id;
     protected T result;
     protected Error error;
-    
+
 
     private Builder() {
-      
+
     }
 
     public Builder id(String id) {
@@ -82,4 +86,6 @@ public class JsonRpcResponse<T> {
       return response;
     }
   }
+
+  // END GENERATED CODE
 }

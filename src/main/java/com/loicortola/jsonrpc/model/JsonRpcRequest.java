@@ -13,7 +13,7 @@ public class JsonRpcRequest {
   public enum Type {
     NOTIFICATION, REQUEST
   }
-  
+
   protected String method;
   protected Map<String, String> params;
   protected String id;
@@ -34,6 +34,25 @@ public class JsonRpcRequest {
   public Type getType() {
     return type;
   }
+
+  /**
+   * Combine a sequence of JsonRpcRequests into a list.
+   *
+   * @param requests the JsonRpcRequests
+   * @return the List of JsonRpcRequests
+   */
+  public static List<JsonRpcRequest> combine(JsonRpcRequest... requests) {
+    if (requests == null || requests.length == 0) {
+      return null;
+    }
+    List<JsonRpcRequest> combined = new ArrayList<JsonRpcRequest>(requests.length);
+    for (int i = 0; i < requests.length; i++) {
+      combined.add(requests[i]);
+    }
+    return combined;
+  }
+
+  // BEGIN GENERATED CODE
 
   @Override
   public boolean equals(Object o) {
@@ -63,22 +82,18 @@ public class JsonRpcRequest {
       ", type=" + type +
       '}';
   }
-  
-  public static List<JsonRpcRequest> combine(JsonRpcRequest... requests) {
-    if (requests == null || requests.length == 0) {
-      return null;
-    }
-    List<JsonRpcRequest> combined = new ArrayList<>(requests.length);
-    for (int i = 0; i < requests.length; i++) {
-      combined.add(requests[i]);
-    }
-    return combined;
-  }
 
+
+  /**
+   * @return a new Request Builder for a normal JSON RPC Request
+   */
   public static Builder builder() {
     return new Builder(Type.REQUEST);
   }
 
+  /**
+   * @return a new Request Builder for a JSON RPC Notification
+   */
   public static Builder notifBuilder() {
     return new Builder(Type.NOTIFICATION);
   }
@@ -100,7 +115,7 @@ public class JsonRpcRequest {
 
     public Builder param(String key, String value) {
       if (this.params == null) {
-        this.params = new HashMap<>();
+        this.params = new HashMap<String, String>();
       }
       this.params.put(key, value);
       return this;
@@ -115,4 +130,6 @@ public class JsonRpcRequest {
       return request;
     }
   }
+
+  // END GENERATED CODE
 }

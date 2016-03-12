@@ -41,3 +41,18 @@ List<JsonRpcResponse<Result>> res = client.send(reqs, Result.class);
 System.out.println("Response is:");
 System.out.println(res);
 ```
+
+Send single JSON-RPC Notification
+```java
+JsonRpcClient client = new HttpJsonRpcClient(endpoint);
+JsonRpcRequest req = JsonRpcRequest.notifBuilder()
+  .method("cmd::execCmd")
+  .param("param1", "myvalue1")
+  .param("param2", "myvalue2")
+  .build();
+  
+// With your own Result class POJO  
+JsonRpcResponse<Result> res = client.send(req, Result.class);
+System.out.println("Response is:");
+System.out.println(res);
+```

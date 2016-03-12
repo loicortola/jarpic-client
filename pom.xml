@@ -19,7 +19,7 @@
 
   <properties>
     <!-- Env -->
-    <java.version>1.8</java.version>
+    <java.version>1.6</java.version>
     <!-- Dependencies -->
     <jackson.version>2.6.0</jackson.version>
     <okhttp.version>3.0.1</okhttp.version>

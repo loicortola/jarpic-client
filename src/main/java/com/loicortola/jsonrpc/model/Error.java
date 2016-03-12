@@ -7,7 +7,13 @@ public class Error {
   private String code;
   private String message;
   private Object data;
-  
+
+  /**
+   * Constructor.
+   * @param code the error code
+   * @param message the error message
+   * @param data the error data Payload
+   */
   public Error(String code, String message, Object data) {
     this.code = code;
     this.message = message;
@@ -25,6 +31,8 @@ public class Error {
   public Object getData() {
     return data;
   }
+
+  // BEGIN GENERATED CODE
 
   @Override
   public boolean equals(Object o) {
@@ -53,4 +61,6 @@ public class Error {
       ", data=" + data +
       '}';
   }
+
+  // END GENERATED CODE
 }
