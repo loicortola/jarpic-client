@@ -1,7 +1,5 @@
 package io.resourcepool.jarpic.model;
 
-import java.lang.*;
-
 /**
  * @author Loïc Ortola on 11/03/2016.
  */

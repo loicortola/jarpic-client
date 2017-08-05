@@ -71,7 +71,6 @@ public class ClientTest {
     Assert.assertEquals(res.getError(), new Error(-32602, "Invalid params", null));
   }
 
-  @Test(expected = IllegalArgumentException.class)
   public void trySingleRequestIllegal() throws IOException {
     JsonRpcClient client = new HttpJsonRpcClient(endpoint + "/single-illegal");
 
@@ -80,6 +79,7 @@ public class ClientTest {
       .param("apiKey", apiKey)
       .build();
     JsonRpcResponse<Result> res = client.send(req, Result.class);
+    Assert.assertEquals(res.getError(), new Error(-32700, "Parse error", null));
   }
 
   @Test
@@ -91,7 +91,7 @@ public class ClientTest {
       .param("apiKey", apiKey)
       .build();
     JsonRpcResponse<Result> res = client.send(req, Result.class);
-    Assert.assertEquals(res.getError(), new Error(-32000, "404 - Not Found", null));
+    Assert.assertEquals(res.getError(), new Error(-32601, "Method not found", null));
   }
 
   @Test
@@ -156,6 +156,14 @@ public class ClientTest {
     List<JsonRpcRequest> reqs = JsonRpcRequest.combine(req1, req2, req3);
 
     List<JsonRpcResponse<Result>> res = client.send(reqs, Result.class);
+
+    Assert.assertEquals(res.size(), 3);
+    // Res1
+    Assert.assertEquals(res.get(0).getError(), new Error(-32601, "Method not found", null));
+    // Res2
+    Assert.assertEquals(res.get(1).getError(), new Error(-32601, "Method not found", null));
+    // Res3
+    Assert.assertEquals(res.get(2).getError(), new Error(-32601, "Method not found", null));
 
   }
 }

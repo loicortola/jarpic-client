@@ -32,9 +32,8 @@
   
   <!-- Source management-->
   <scm>
-    <url>git@github.com:resourcepool/jarpic-client.git</url>
-    <connection>scm:git:git@github.com:resourcepool/jarpic-client.git</connection>
-    <developerConnection>scm:git:git@github.com:resourcepool/jarpic-client.git</developerConnection>
+    <url>https://github.com/resourcepool/jarpic-client.git</url>
+    <connection>scm:git:https://github.com/resourcepool/jarpic-client.git</connection>
   </scm>
   
   <!-- Release -->
@@ -81,17 +80,25 @@
     <!-- Env -->
     <java.version>1.6</java.version>
     <!-- Dependencies -->
-    <jackson.version>2.6.0</jackson.version>
-    <okhttp.version>3.0.1</okhttp.version>
+    <jackson.version>2.9.0</jackson.version>
+    <okhttp.version>3.8.1</okhttp.version>
     <!-- Project Encoding -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Project Plugins -->
-    <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+    <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <checkstyle-plugin.version>2.17</checkstyle-plugin.version>
+    <jsr305.version>3.0.2</jsr305.version>
   </properties>
 
   <dependencies>
+    <!-- Nullable -->
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>${jsr305.version}</version>
+    </dependency>
+
     <!-- Jackson -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>

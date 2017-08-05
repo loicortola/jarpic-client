@@ -10,6 +10,7 @@ import io.resourcepool.jarpic.validator.JsonRpc2SchemaValidator;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,10 +24,9 @@ public abstract class ResponseParser {
    * Assert JsonNode is valid JSON RPC 2.0 Response (either object or array).
    *
    * @param res the response
-   * @throws NullPointerException     if not valid
-   * @throws IllegalArgumentException if not valid
+   * @throws ParseException     if response is null, empty, or invalid
    */
-  public static void assertValid(JsonNode res) {
+  public static void assertValid(JsonNode res) throws ParseException {
     if (res.isArray()) {
       // Test valid schema for all entries
       ArrayNode values = (ArrayNode) res;
@@ -47,10 +47,9 @@ public abstract class ResponseParser {
    * @param <T>         the type inference for the result
    * @return the JsonRpcResponse
    * @throws IOException              if response is parsing error occurs
-   * @throws NullPointerException     if response is null or empty
-   * @throws IllegalArgumentException if response is not valid
+   * @throws ParseException     if response is null, empty, or invalid
    */
-  public static <T> JsonRpcResponse<T> parseOne(JsonNode content, Class<T> resultClass) throws IOException {
+  public static <T> JsonRpcResponse<T> parseOne(JsonNode content, Class<T> resultClass) throws IOException, ParseException {
     ObjectMapper mapper = new ObjectMapper();
     assertValid(content);
     // One should only return a JSON object
@@ -66,10 +65,9 @@ public abstract class ResponseParser {
    * @param <T>         the type inference for the result
    * @return the JsonRpcResponse
    * @throws IOException              if response is parsing error occurs
-   * @throws NullPointerException     if response is null or empty
-   * @throws IllegalArgumentException if response is not valid
+   * @throws ParseException     if response is null, empty, or invalid
    */
-  public static <T> JsonRpcResponse<T> parseOne(InputStream content, Class<T> resultClass) throws IOException {
+  public static <T> JsonRpcResponse<T> parseOne(InputStream content, Class<T> resultClass) throws IOException, ParseException {
     ObjectMapper mapper = new ObjectMapper();
     // One should only return a JSON object
     JsonNode node = mapper.readTree(content);
@@ -87,8 +85,6 @@ public abstract class ResponseParser {
    * @param <T>         the type inference for the result
    * @return the JsonRpcResponse List
    * @throws IOException              if response is parsing error occurs
-   * @throws NullPointerException     if response is null or empty
-   * @throws IllegalArgumentException if response is not valid
    */
   public static <T> List<JsonRpcResponse<T>> parseList(JsonNode content, Class<T> resultClass) throws IOException {
     ObjectMapper mapper = new ObjectMapper();
@@ -108,8 +104,6 @@ public abstract class ResponseParser {
    * @param <T>         the type inference for the result
    * @return the JsonRpcResponse List
    * @throws IOException              if response is parsing error occurs
-   * @throws NullPointerException     if response is null or empty
-   * @throws IllegalArgumentException if response is not valid
    */
   public static <T> List<JsonRpcResponse<T>> parseList(InputStream content, Class<T> resultClass) throws IOException {
     ObjectMapper mapper = new ObjectMapper();
@@ -130,8 +124,6 @@ public abstract class ResponseParser {
    * @param <T>         the type inference for the result
    * @return the JsonRpcResponse
    * @throws IOException              if response is parsing error occurs
-   * @throws NullPointerException     if response is null or empty
-   * @throws IllegalArgumentException if response is not valid
    */
   private static <T> JsonRpcResponse<T> parse(ObjectMapper mapper, ObjectNode node, Class<T> resultClass) throws IOException {
     JsonRpcResponse.Builder builder = JsonRpcResponse.builder();
