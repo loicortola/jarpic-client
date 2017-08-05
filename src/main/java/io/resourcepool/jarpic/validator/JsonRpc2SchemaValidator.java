@@ -1,4 +1,4 @@
-package com.loicortola.jarpic.validator;
+package io.resourcepool.jarpic.validator;
 
 
 import com.fasterxml.jackson.databind.JsonNode;

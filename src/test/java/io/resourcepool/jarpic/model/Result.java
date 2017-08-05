@@ -1,4 +1,4 @@
-package com.loicortola.jarpic.model;
+package io.resourcepool.jarpic.model;
 
 /**
  * @author Loïc Ortola on 12/03/2016.

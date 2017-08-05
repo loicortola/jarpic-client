@@ -1,4 +1,4 @@
-package com.loicortola.jarpic.model;
+package io.resourcepool.jarpic.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

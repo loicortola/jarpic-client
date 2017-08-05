@@ -1,4 +1,4 @@
-package com.loicortola.jarpic.parser;
+package io.resourcepool.jarpic.parser;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import com.loicortola.jarpic.model.JsonRpcRequest;
+import io.resourcepool.jarpic.model.JsonRpcRequest;
 
 import java.util.List;
 import java.util.Map;

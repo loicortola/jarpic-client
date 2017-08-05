@@ -1,10 +1,10 @@
-package com.loicortola.jarpic.client;
+package io.resourcepool.jarpic.client;
 
-import com.loicortola.jarpic.model.Error;
-import com.loicortola.jarpic.model.JsonRpcRequest;
-import com.loicortola.jarpic.model.JsonRpcResponse;
-import com.loicortola.jarpic.parser.RequestMapper;
-import com.loicortola.jarpic.parser.ResponseParser;
+import io.resourcepool.jarpic.model.Error;
+import io.resourcepool.jarpic.model.JsonRpcRequest;
+import io.resourcepool.jarpic.model.JsonRpcResponse;
+import io.resourcepool.jarpic.parser.RequestMapper;
+import io.resourcepool.jarpic.parser.ResponseParser;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

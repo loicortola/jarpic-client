@@ -1,7 +1,24 @@
 # jarpic-client
 A Simple JSON-RPC 2.0 Java Client using Jackson and OkHttp
 
+This library works on Android as well
+
 [![Build Status](https://travis-ci.org/resourcepool/jarpic-client.svg?branch=master)](https://travis-ci.org/resourcepool/jarpic-client)
+
+## Add it to your project
+Maven:
+```xml
+<!-- https://mvnrepository.com/artifact/io.resourcepool/jarpic-client -->
+<dependency>
+    <groupId>io.resourcepool</groupId>
+    <artifactId>jarpic-client</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+Gradle:
+```groovy
+compile 'io.resourcepool:jarpic-client:1.0.0'
+```
 
 ## Usage
 
@@ -60,7 +77,7 @@ System.out.println(res);
 ```
 
 ## License
-   Copyright 2016 Resourcepool
+   Copyright 2017 Resourcepool
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

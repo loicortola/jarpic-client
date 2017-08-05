@@ -1,12 +1,12 @@
-package com.loicortola.jarpic.parser;
+package io.resourcepool.jarpic.parser;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.loicortola.jarpic.model.Error;
-import com.loicortola.jarpic.model.JsonRpcResponse;
-import com.loicortola.jarpic.validator.JsonRpc2SchemaValidator;
+import io.resourcepool.jarpic.model.Error;
+import io.resourcepool.jarpic.model.JsonRpcResponse;
+import io.resourcepool.jarpic.validator.JsonRpc2SchemaValidator;
 
 import java.io.IOException;
 import java.io.InputStream;

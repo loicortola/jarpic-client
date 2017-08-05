@@ -1,7 +1,7 @@
-package com.loicortola.jarpic.client;
+package io.resourcepool.jarpic.client;
 
-import com.loicortola.jarpic.model.JsonRpcRequest;
-import com.loicortola.jarpic.model.JsonRpcResponse;
+import io.resourcepool.jarpic.model.JsonRpcRequest;
+import io.resourcepool.jarpic.model.JsonRpcResponse;
 
 import java.io.IOException;
 import java.util.List;
