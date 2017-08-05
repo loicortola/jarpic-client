@@ -4,7 +4,7 @@
 
   <groupId>io.resourcepool</groupId>
   <artifactId>jarpic-client</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   
   <!-- Project headers-->
@@ -87,7 +87,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Project Plugins -->
     <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-    <spring.boot.plugin.version>1.3.0.RELEASE</spring.boot.plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <checkstyle-plugin.version>2.17</checkstyle-plugin.version>
   </properties>
